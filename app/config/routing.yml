@@ -1,0 +1,11 @@
+er_menu:
+    resource: "@MenuBundle/Resources/config/routing.yml"
+    prefix:   /Menu
+
+er_core:
+    resource: "@ERCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
+

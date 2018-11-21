@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Une erreur s'est produite : {{ status_text }}</title>
+	 {% block stylesheets %}
+      
+       <link href="{{ asset('foundation_e_reveil/css/app.css') }}" rel="stylesheet" />
+	{% endblock %}
+	<script src="{{ asset('foundation_e_reveil/node_modules/jquery/dist/jquery.js') }}"></script>
+	<script src="{{ asset('foundation_e_reveil/node_modules/foundation-sites/dist/js/foundation.js') }}"></script>
+  </head>
+  <body>
+   <div id="content" class="grid-container">
+    <h1>Oups! Une erreur s'est produite !</h1>
+    <h2>Erreur : "{{ status_code }} {{ status_text }}".</h2>
+
+    <div>
+      Un problème s'est produit. Nous vous invitons à nous contacter par email afin de nous expliquer la manipulation
+	  que vous étiez en train d'effectuer quand l'erreur s'est produite. Nos équipes sont mobilisées afin de résoudre ce problème.
+	  Veuillez nous excuser pour la gêne occasionnée.
+    </div>
+	
+</div>
+{% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+     <script src="{{ asset('foundation_e_reveil/node_modules/what-input/dist/what-input.js') }}"></script>
+    <script src="{{ asset('foundation_e_reveil/js/app.js')}}"></script>   
+  {% endblock %}
+  </body>
+</html>
