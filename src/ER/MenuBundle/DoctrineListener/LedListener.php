@@ -28,7 +28,7 @@ class LedListener
       return;
     }
 
-    $this->ledFileLauncher->fileExecutionAddLed($entity);
+    $this->ledFileLauncher->fileExecutionLed($entity);
   }
   
   
@@ -42,7 +42,7 @@ class LedListener
       return;
     }
 
-    $this->ledFileLauncher->fileExecutionEditLed($entity);
+    $this->ledFileLauncher->fileExecutionLed($entity);
   }
   
   
@@ -56,7 +56,7 @@ class LedListener
       return;
     }
 
-    $this->ledFileLauncher->fileExecutionDeleteLed($entity);
+    $this->ledFileLauncher->fileExecutionLed($entity);
   }
   
   
