@@ -1,0 +1,95 @@
+{% extends "ERCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+ <br/>
+  
+ 
+	  
+  <div class="grid-x align-center">
+   
+  
+   
+    {% if listLeds %}
+	    <div class="cell medium-8">
+         {% for message in app.session.flashbag.get('notice') %}
+        <div class="callout secondary">
+        <div class="text-center">{{ message }}</div>		
+        </div>	
+        {% endfor %}		
+	     <h1 class="text-center">Le réveil lumineux est activé</h1>
+		    
+		   {% for led in listLeds %}
+		   
+		   <hr>
+             {% if not led.jours.empty %}
+             <p>
+              Jours du réveil lumineux :
+              {% for jours in led.jours %}
+              <span class="bold">{{ jours.jour }} {% if not loop.last %}, {% endif %}</span>
+              {% endfor %}
+            </p>
+             {% endif %} 
+             <hr>
+		     <p>
+             Heure du réveil lumineux : 
+             <span class="bold">
+             {% if not led.heure.empty %}
+               {% for heures in led.heure %}
+                {{ heures.heure }}{% if not loop.last %}, {% endif %}
+               {% endfor %}
+             {% endif %}
+             H
+             {% if not led.minute.empty %}
+               {% for minutes in led.minute %}
+                {{ minutes.minute }}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+             {% endif %}
+            </span>
+            </p>
+            <hr>  
+            <p>
+            Durée de progression de la led : <span class="bold">{{ led.dureeProgressionAllumage }} minutes</span>
+            </p>  
+            <hr>  
+            <p>
+            Luminosité en fin d'allumage : <span class="bold">{{ led.luminositeFinAllumage }} %</span>
+           </p>
+           <hr>
+           <br/>  
+          <div><a class="button medium" href="{{ path('menu_led_view', {'id': led.id}) }}">Gérer mes paramètres</a></div>
+         		 
+		 
+	   {% endfor %}
+	   
+    </div>
+	
+	  
+    {% else %}
+	
+      <div class="cell medium-8">
+	    <div class="text-center">
+         {% for message in app.session.flashbag.get('info') %}
+        <div class="callout secondary">
+        {{ message }}
+        </div>
+		{% endfor %}
+	  <h1 class="text-center">Le réveil lumineux est désactivé<h1/>
+	  <p><img  src="{{ asset('Img/ampoule.png')}}" alt="led désactivée"><p/>
+	  <p><a class="button medium" href="{{ path('menu_led_add') }}">
+         Paramétrer et Activer 
+        </a></p>
+	    </div>
+	  </div>
+	 
+    {% endif %}
+  </div>
+  
+  
+ 
+ 
+
+{% endblock %}

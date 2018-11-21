@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}E-REVEIL{% endblock %}</title>
+
+    {% block stylesheets %}
+      
+       <link href="{{ asset('foundation_e_reveil/css/app.css') }}" rel="stylesheet" />
+	{% endblock %}
+	<script src="{{ asset('foundation_e_reveil/js/vendor/jquery.js') }}"></script>
+	<script src="{{ asset('foundation_e_reveil/js/vendor/foundation.js') }}"></script>
+  </head>
+  
+  <body>
+  <header>  
+<div class="title-bar" data-responsive-toggle="mainNavigation" data-hide-for="medium">
+  <div class="title-bar-left">
+    <button class="menu-icon" type="button" data-toggle="mainNavigation"></button>
+    <div class="title-bar-title">Menu</div>
+  </div>
+  <div class="title-bar-right">
+   <a href="{{ path('er_core_homepage') }}">E-reveil</a> 
+  </div>
+</div>
+<div class="top-bar" id="mainNavigation">
+<a href="{{ path('er_core_homepage') }}"><img class="logo" src="{{ asset('Img/logo.png')}}"  alt="logo e-reveil"></a>
+  <div class="top-bar-right">
+    <ul class="dropdown menu" data-dropdown-menu>
+	  <li><a href="{{ path('menu_verif_led') }}">LED</a></li>
+	  <li><a href="{{ path('menu_verif_audio') }}">AUDIO</a></li>
+	</ul>
+  </div>
+</div>  
+</header>
+
+  
+   <div id="content" class="grid-container">
+        {% block body %}
+        {% endblock %}
+      </div>
+
+
+
+    <footer>
+	<br/>
+      <div class="text-center">E-reveil, a Raspberry Project  © {{ 'now'|date('Y') }}</div>
+    </footer>
+	  
+ {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+     <script src="{{ asset('foundation_e_reveil/js/vendor/what-input.js') }}"></script>
+    <script src="{{ asset('foundation_e_reveil/js/app.js')}}"></script>   
+  {% endblock %}
+ </body>
+</html>

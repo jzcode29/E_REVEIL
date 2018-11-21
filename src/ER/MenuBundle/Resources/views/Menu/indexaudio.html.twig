@@ -1,0 +1,97 @@
+{% extends "ERCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+ <br/>
+  
+ 
+	  
+  <div class="grid-x align-center">
+   
+    {% if listAudios %}
+      <div class="cell medium-8">
+	     
+         {% for message in app.session.flashbag.get('notice') %}
+         <div class="callout secondary">
+         <div class="text-center">{{ message }}</div>	
+         </div>	
+        {% endfor %}		
+	      <h1 class="text-center">Le réveil audio est activé</h1>
+		    {% for audio in listAudios %}
+		    <hr>  
+            {% if not audio.jours.empty %}
+             <p>
+               Jours du réveil audio :
+              {% for jours in audio.jours %}
+              <span class="bold">{{ jours.jour }} {% if not loop.last %}, {% endif %}</span>
+              {% endfor %}
+            </p>
+            {% endif %} 
+            <hr>
+           <p>
+            Heure du réveil audio : 
+           <span class="bold">
+           {% if not audio.heure.empty %}
+           {% for heures in audio.heure %}
+           {{ heures.heure }}{% if not loop.last %}, {% endif %}
+           {% endfor %}
+           {% endif %}
+           H
+           {% if not audio.minute.empty %}
+           {% for minutes in audio.minute %}
+           {{ minutes.minute }}{% if not loop.last %}, {% endif %}
+           {% endfor %}
+          {% endif %}
+          </span>  
+         </p> 
+         <hr>  
+         <p>
+         Volume sonore maximum : <span class="bold">{{ audio.volumeMax }} % </span>
+         </p>
+        <hr>
+        <p>  
+       {# On vérifie qu'un fichier mp3 soit bien associé au paramétrage de l'audio #}
+       {% if audio.fichierAudio is not null %}
+   
+  
+       Musique : <span class="bold">{{ audio.fichierAudio.alt }}</span>
+	  
+       </p>
+        {% endif %}
+         <hr>
+		 <br/>
+         <p><a class="button medium" href="{{ path('menu_audio_view', {'id': audio.id}) }}">Gérer mes paramètres</a></p>
+         
+	   {% endfor %}
+	
+      </div>
+	 </div>
+	  
+    {% else %}
+	
+      <div class="cell medium-8">
+	    <div class="text-center">
+         {% for message in app.session.flashbag.get('info') %}
+        <div class="callout secondary">
+        {{ message }}
+        </div>
+		{% endfor %}
+	  <h1>Le réveil audio est désactivé<h1/>
+	  <p><img  src="{{ asset('Img/speaker.png')}}" alt="audio désactivé"><p/>
+	  <p><a class="button medium" href="{{ path('menu_audio_add') }}">
+         Paramétrer et Activer 
+        </a></p>
+	    </div>
+	  </div>
+	 
+    {% endif %}
+  </div>
+  
+  
+ 
+ 
+
+{% endblock %}

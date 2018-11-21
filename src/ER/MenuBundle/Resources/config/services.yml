@@ -1,0 +1,12 @@
+services:
+
+  menu.led_file_launcher:
+         class: ER\MenuBundle\Launcher\LedFileLauncher
+         
+          
+  
+      
+      
+      
+  
+   

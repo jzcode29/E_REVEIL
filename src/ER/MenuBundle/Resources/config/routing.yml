@@ -1,0 +1,89 @@
+
+
+
+
+menu_verif_led:
+    path:     /Led
+    defaults: { _controller: MenuBundle:Menu:verifled }
+    
+    
+    
+menu_led_view:
+    path:     /Param-led-view/{id}
+    defaults:
+        _controller: MenuBundle:Menu:ledview
+    requirements:
+        id: \d+
+        
+        
+menu_led_add:
+    path:     /Param-led-add
+    defaults:
+        _controller: MenuBundle:Menu:addled
+    
+    
+
+menu_edit_led:
+    path:     /Param-led-edit/{id}
+    defaults:
+        _controller: MenuBundle:Menu:lededit
+    requirements:
+        id: \d+    
+    
+    
+menu_delete_led:
+    path:     /Param-led-delete/{id}
+    defaults:
+        _controller: MenuBundle:Menu:leddelete
+    requirements:
+        id: \d+        
+    
+    
+menu_verif_audio:
+    path:     /audio
+    defaults: { _controller: MenuBundle:Menu:verifaudio }
+    
+    
+menu_audio_view:
+    path:     /Param-audio-view/{id}
+    defaults:
+        _controller: MenuBundle:Menu:audioview
+    requirements:
+        id: \d+
+        
+        
+menu_audio_add:
+    path:     /Param-audio-add
+    defaults:
+        _controller: MenuBundle:Menu:addaudio   
+        
+    
+menu_edit_audio:
+    path:     /Param-audio-edit/{id}
+    defaults:
+        _controller: MenuBundle:Menu:audioedit
+    requirements:
+        id: \d+    
+    
+    
+menu_delete_audio:
+    path:     /Param-audio-delete/{id}
+    defaults:
+        _controller: MenuBundle:Menu:audiodelete
+    requirements:
+        id: \d+           
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

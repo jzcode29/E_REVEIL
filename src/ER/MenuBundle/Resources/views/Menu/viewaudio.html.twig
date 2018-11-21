@@ -1,0 +1,112 @@
+
+
+{% extends "ERCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Paramétres réveil audio - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+ <div class="text-center">
+  <h1>Paramétres du réveil audio</h1>
+ </div>
+ 
+
+  <div class="grid-container">
+      <div class="grid-x align-center">
+	    <div class="cell medium-8">
+  
+  
+  <hr>
+  
+  
+    {% if not audio.jours.empty %}
+    <p>
+      Jours de déclenchement du réveil audio :
+      {% for jours in audio.jours %}
+        <span class="bold">{{ jours.jour }} {% if not loop.last %}, {% endif %}</span>
+      {% endfor %}
+    </p>
+  {% endif %}
+  
+     <hr>
+  
+  
+      <p>
+   Heure de déclenchement du réveil audio : 
+   
+   
+   <span class="bold">
+  {% if not audio.heure.empty %}
+   {% for heures in audio.heure %}
+   {{ heures.heure }}{% if not loop.last %}, {% endif %}
+   {% endfor %}
+   {% endif %}
+  
+  
+   <span>H</span>
+  
+  
+   {% if not audio.minute.empty %}
+   {% for minutes in audio.minute %}
+   {{ minutes.minute }}{% if not loop.last %}, {% endif %}
+   {% endfor %}
+   {% endif %}
+  </span>
+   
+   </p>
+  
+  <hr>
+  
+   <p>
+   Volume sonore maximum : <span class="bold">{{ audio.volumeMax }} % </span>
+   </p>
+   
+  
+   
+   
+   
+   <hr>
+   <div>
+
+    {# On vérifie qu'un fichier mp3 soit bien associé au paramétrage de l'audio #}
+    {% if audio.fichierAudio is not null %}
+      <div>
+  
+      Musique : <span class="bold">{{ audio.fichierAudio.alt }}</span>
+	  
+      </div>
+    {% endif %}
+	
+  </div>
+   
+   
+   
+   
+   
+   
+   
+   
+   <hr>
+
+  <br/>
+
+  <p>
+    <a href="{{ path('menu_verif_audio') }}" class="button medium">
+      Retour 
+    </a>
+    <a href="{{ path('menu_edit_audio', {'id': audio.id}) }}" class="button medium">
+     
+      Modifier les paramètres
+    </a>
+    <a href="{{ path('menu_delete_audio', {'id': audio.id}) }}"  class="button medium">
+      Supprimer ces paramètres
+    </a>
+  </p>
+
+  
+  </div>
+ </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+
+
+{% extends "ERCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Supprimer les paramètres - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="text-center">
+  <h1>Attention</h1>
+</div>
+  <div class="grid-container">
+      <div class="grid-x align-center">
+	    <div class="cell medium-8">
+  
+  <p>
+    La suppression des paramètres entraînera la désactivation du réveil lumineux. 
+  </p>
+  <p>Continuer ?</p>
+
+   <img  src="{{ asset('Img/delete.png')}}" alt="corbeille">
+  
+  
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('menu_delete_led', {'id': led.id}) }}" method="post">
+    <a href="{{ path('menu_led_view', {'id': led.id}) }}" class="button medium">
+      Non
+    </a>
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Oui" class="button medium" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+	
+  </form>
+   
+   </div>
+  </div>
+</div>
+   
+{% endblock %}
