@@ -10,33 +10,16 @@ class AudioFileLauncher
 {
   
 
-  public function fileExecutionAddAudio(Audio $audio)
+  public function fileExecutionAudio(Audio $audio)
   
   {
 
-
-     fopen("\\var\\www\\e_reveil\\TextFiles\\Audio.txt", "w+");
-	 
- 
+exec('/bin/sh  /var/www/e_reveil/script/sbin/appele_cron.sh >> /var/www/e_reveil/script/tmp/log 2>&1');
+    
+	  
   }
   
-  public function fileExecutionEditAudio(Audio $audio)
-  
-  {
-     
-      fopen("\\var\\www\\e_reveil\\TextFiles\\Audio.txt", "w+");
-	 
  
-  }
-  
-  public function fileExecutionDeleteAudio(Audio $audio)
-  
-  {
-     
-  fopen("\\var\\www\\e_reveil\\TextFiles\\Audio.txt", "w+");
-	 
- 
-  }
   
 
 }
