@@ -1,0 +1,27 @@
+les scripts
+
+partie python : edit_cron fait appele a tous les scrpits .sh pour generer les crons en recupereant les valeurs de la base via les scripts pythons cron_son_db et cron_led_db 
+cron_db et led_db son deux modele que j'importe dans les scripts afin de se connecter a la base et de recuperer les info utiles 
+
+lecture_son.py et led.py sont les script qui lance le so et la led 
+
+
+
+partie sbin : 
+cron_son.sh et cron_led.sh sont les deux script qui sont appeler par les cron pour lancer le son et la led
+
+reload_cron lance crontab_back a chaque nouveau parametrage d'une cron
+crontab_back.sh fait un export du crontab -e (les cron de l'utilisateur "pi" pour ma part) le copie dans un fichier tmp (crontab_edit.txt) puis le recopie dans un autre fichier crontab_conf.txt
+
+ce qui permetra a edit_cron.sh de recuperer les infos, edit_cron.sh va extrait a nouveau les cron utilisateur en cours et importe les nouvelles cree et copier dans les fichiers temporaire
+
+c'est un peu space mais les fonction crontab -e en script sa galere un peu 
+
+-------------
+
+le fichier tmp ne garde que le backup des crons tout les autre doc.txt sont suprimer et reediter a chaque fois
+
+
+------------------
+le script conf_cron_jour a ete supp car plus utiliser  
+ 
