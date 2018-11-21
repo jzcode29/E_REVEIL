@@ -33,7 +33,7 @@ class AudioListener
       return;
     }
 
-    $this->audioFileLauncher->fileExecutionAddAudio($entity);
+    $this->audioFileLauncher->fileExecutionAudio($entity);
   }
   
   
@@ -47,7 +47,7 @@ class AudioListener
       return;
     }
 
-    $this->audioFileLauncher->fileExecutionEditAudio($entity);
+    $this->audioFileLauncher->fileExecutionAudio($entity);
   }
   
   
@@ -61,15 +61,8 @@ class AudioListener
       return;
     }
 
-    $this->audioFileLauncher->fileExecutionDeleteAudio($entity);
+    $this->audioFileLauncher->fileExecutionAudio($entity);
   }
-  
-  
-  
-  
-  
-  
-  
   
   
   
