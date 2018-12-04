@@ -1,28 +1,48 @@
 
 
   
-  <div class="grid-x align-center">
-	   <div class="cell medium-8">
+<div class="grid-x align-center">
+  <div class="cell medium-8">
       
   
   {% if listLeds %}
    {% for led in listLeds %}
-  <form action="{{ path('menu_edit_led', {'id': led.id}) }}" method="post" >
+  <form  action="{{ path('menu_edit_led', {'id': led.id}) }}" method="post" >
     {% endfor %}
   {% else %}
-  <form action="{{ path('menu_led_add') }}" method="post" >
+  <form  action="{{ path('menu_led_add') }}" method="post" >
   {% endif %}     
 
+   
+
+
+
+    <fieldset class="fieldset">
+		
+		
+		
+    <legend>{{ form_label(form.Jours,"Jours") }}</legend>
+    
+    
+   
+   
+    {% for field in form.Jours %}
+       <div class="scores">
+         {{ form_widget(field) }}
+         {{ form_label(field) }}
+       </div>
+    {% endfor %}
+    </fieldset>
+
+  
+   
   {# Les erreurs générales du formulaire. #}
   {{ form_errors(form) }}
 
-       
+  
 			   
-			   
-	 {{ form_row(form.jours) }}
-	 
-	 
-          <div>
+	
+
 		 
     {# Génération du label. #}
     {{ form_label(form.heure,"Heures") }}
@@ -30,63 +50,58 @@
     {# Affichage des erreurs pour ce champ précis. #}
     <span class="error">{{ form_errors(form.heure) }}</span>
          
-               <div>
+              
               {# Génération de l'input. #}
-          {{ form_widget(form.heure) }}
-             </div>
-        </div>
+              {{ form_widget(form.heure) }}
+            
+    <br/>
 		
-		
-		<div>
+    
     {# Génération du label. #}
     {{ form_label(form.minute,"Minutes") }}
 
     {# Affichage des erreurs pour ce champ précis. #}
     <span class="error">{{ form_errors(form.minute) }}</span>
        
-               <div>
+             
               {# Génération de l'input. #}
             {{ form_widget(form.minute) }}
-             </div>
-        </div>
+            
 	
-
+   <br/>
 	
-		<div>
+    
     {# Génération du label. #}
-    {{ form_label(form.dureeProgressionAllumage,"Durée de progression de la led (en minutes)") }}
+    {{ form_label(form.dureeProgressionAllumage,"Durée de progression de la LED (en minutes)") }}
 
     {# Affichage des erreurs pour ce champ précis. #}
     <span class="error">{{ form_errors(form.dureeProgressionAllumage) }}</span>
 
-               <div>
+              
               {# Génération de l'input. #}
             {{ form_widget(form.dureeProgressionAllumage) }}
-             </div>
-        </div>
-			         
-
-                     
-                     
-
-                    <div>
+            
+    <br/>       
+            
+            
     {# Génération du label. #}
     {{ form_label(form.luminositeFinAllumage, "Luminosité en fin d'allumage (%)") }}
 
     {# Affichage des erreurs pour ce champ précis. #}
     <span class="error">{{ form_errors(form.luminositeFinAllumage) }}</span>
 
-               <div>
+            
               {# Génération de l'input. #}
             {{ form_widget(form.luminositeFinAllumage) }}
-             </div>
-        </div> 
+            
+             
+    
 		             
 				 
 		<br/>			 
 		
 		
-
+    
 
         <input type="submit" class="button medium"  value="Valider"  />	
 	    {% if listLeds %}	
@@ -97,22 +112,20 @@
 		<a href="{{ path('menu_verif_led')}}" class="button medium">Annuler</a>
 		{% endif %}
 		
-		
+	  
 		
 		
 	 {# Génération automatique des champs pas encore écrits.
      Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
      et tous les champs cachés (type « hidden »). #}
-     <div>{{ form_rest(form) }}</div>
-		
- 
-		
-		
-		
+      
+	  {{ form_rest(form) }}
+     
+
     </form>
 
-	   </div>
-	  </div>
+   </div>
+</div>  
 
 
 	

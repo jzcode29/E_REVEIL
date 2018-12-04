@@ -28,10 +28,8 @@ class LedType extends AbstractType
     
 
 
-    $builder
-      ->add('dureeProgressionAllumage',IntegerType::class)
-      ->add('luminositeFinAllumage',IntegerType::class)
-      ->add('jours', EntityType::class, array(
+    $builder    
+      ->add('Jours', EntityType::class, array(
         'class'         => 'MenuBundle:Jours',
 		'attr' => ['class' => 'bold'],
         'choice_label'  => 'jour',
@@ -40,13 +38,16 @@ class LedType extends AbstractType
        ->add('heure', EntityType::class, array(
        'class'         => 'MenuBundle:Heures',
        'choice_label'  => 'heure',
-       'multiple'      => true,
+       'multiple'      => false,
 	   'expanded' => false))
        ->add('minute', EntityType::class, array(
        'class'         => 'MenuBundle:Minutes',
        'choice_label'  => 'minute',
-       'multiple'      => true,
-	   'expanded' => false));
+       'multiple'      => false,
+	   'expanded' => false))
+	   ->add('dureeProgressionAllumage',IntegerType::class)
+       ->add('luminositeFinAllumage',IntegerType::class)
+       ;
    
  
    
