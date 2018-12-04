@@ -6,8 +6,8 @@ import tempfile
 from string import *
 import time
 #from  cron.cron_son_2 import *
-from cron.cron_led_2 import *
-from cron.cron_son_2 import *
+from db.cron_led_db import *
+from db.cron_son_db import *
 HERE= os.path.dirname(sys.argv[0])
 APPDIR = os.path.abspath(HERE)
 sys.path.insert(0, APPDIR)
@@ -75,35 +75,11 @@ with open("/var/www/e_reveil/script/tmp/crontab_conf", 'a+') as file:
     file.write(''.join([str(j_son)]))
     file.write(" ")
     file.write(cron_son)
-time.sleep(4)    
-##with open("/var/www/e_reveil/script/tmp/crontab_conf_t", 'a+') as file:
-##    text = file.read()
-##    file.write(''.join([str(m_led)]))
-##    file.write(" ")
-##    file.write(''.join([str(h_led)]))
-##    file.write(" ")
-##    file.write("* * ")
-##    file.write(''.join([str(j_led)]))
-##    file.write(" ")
-##    file.write(cron_led)
-##    file.write(''.join([str(m_son)]))
-##    file.write(" ")
-##    file.write(''.join([str(h_son)]))
-##    file.write(" ")
-##    file.write("* * ")
-##    file.write(''.join([str(j_son)]))
-##    file.write(" ")
-##    file.write(cron_son)
-#On insère la commande du fichier temp dans la crontab :
 os.system('sh /var/www/e_reveil/script/sbin/edit_cron.sh')
 #Je supprime le fichier temporaire
-
-#########time.sleep(2)
-#os.remove('/var/www/e_reveil/script/tmp/crontab_conf_t')
 os.remove('/var/www/e_reveil/script/tmp/crontab_conf')
 os.remove('/var/www/e_reveil/script/tmp/cron_tmpfile')
 os.remove('/var/www/e_reveil/script/tmp/crontab_edit')
-#os.system('sh /var/www/e_reveil/script/sbin/exec_cron_2.sh')
-#db.close()
+
 
 

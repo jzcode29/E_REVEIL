@@ -8,8 +8,9 @@ import pygame
 from pygame.locals import *
 import os, sys
 import RPi.GPIO as GPIO
-import pymysql
-from e_reveil.fichier_audio_db import *
+from db.fichier_audio_db import *
+
+
 
 
 HERE= os.path.dirname(sys.argv[0])
@@ -26,17 +27,15 @@ volume = (db_vol)
 pygame.init()
 pygame.mixer.music.load(son,)
 pygame.mixer.music.play()
-##
-##filepath = glob.glob('/home/pi/Desktop/appli_reveil/*.txt')[0]
-##filename = splitext(basename(filepath))[0]
-##
-##
-##dir=("/home/pi/Desktop/appli_reveil/son/")
-##son =((dir)+(filename))
-##volume = ("70")
-##pygame.init()
-##pygame.mixer.music.load(son,)
-##pygame.mixer.music.play()
+
+##GPIO.setmode(GPIO.BOARD)   # La numerotation choisie
+##GPIO.setup(36, GPIO.IN)  # Une entree : le poussoir
+GPIO.setmode(GPIO.BOARD)   # La numerotation choisie
+GPIO.setup(36, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Une entree : le poussoir
+
+
+
+channel = 36
 
 def my_callback(channel):
   if GPIO.input(channel):
@@ -51,13 +50,13 @@ def my_callback(channel):
     root.destroy()
     sys.exit()
     
-GPIO.setmode(GPIO.BOARD)   # La numerotation choisie
-GPIO.setup(32, GPIO.IN)  # Une entree : le poussoir
 
 
-    
-GPIO.add_event_detect(32, GPIO.BOTH, callback=my_callback)
 
+
+  
+GPIO.add_event_detect(36, GPIO.BOTH, callback=my_callback)
+GPIO.cleanup()
 def vol():
     root.after(1,vol)
     vol_1=Buttonvolume.get()
@@ -67,7 +66,8 @@ def vol():
 
 def Arret():
     pygame.mixer.music.stop()
-    root.destroy()    
+    root.destroy()
+    sys.exit()
 
 root = Tk()
 root.title("Musique du reveil")

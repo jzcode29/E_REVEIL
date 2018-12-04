@@ -1,36 +1,7 @@
 import RPi.GPIO as GPIO        #Importation des modules
-import pymysql
+from db.led_db import *
 import time
 import sys
-
-# Open database connection
-
-db = pymysql.connect("localhost","pi","Teamgeekdu13","e_reveil" )
-sql = "SELECT * FROM led"
-# prepare a cursor object using cursor() method
-cursor = db.cursor()
-cursor.execute(sql)
-data = cursor.fetchone()
-# execute SQL query using execute() method.
-
-try:
-   # Execute the SQL command
-    cursor.execute(sql)
-   # Fetch all the rows in a list of lists.
-    results = cursor.fetchall()
-    for row in results:
-        id = row[0]
-        duree_progression_allumage = row[1]
-        luminosite_fin_allumage = row[2]
-      # Now print fetched result
-##      print ("id = %s,d = %s,l= %s" % \
-##         (row[0],row[1],row[2]))
-          
-except:
-    print ("Error: unable to fetch data db_led")
-tps = (row[1] / 100)
-
-db.close()
 
 
 # disconnect from server
@@ -59,18 +30,18 @@ def my_callback(channel):
 
     
 GPIO.setmode(GPIO.BOARD)   # La numerotation choisie
-GPIO.setup(32, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Une entree : le poussoir
+GPIO.setup(36, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Une entree : le poussoir
 
 
 
-GPIO.add_event_detect(32, GPIO.FALLING, callback=my_callback )
+GPIO.add_event_detect(36, GPIO.FALLING, callback=my_callback )
 
 try:
     while True:
-            for i in range (row[2]):  # envoi le resulta en parametre 
+            for i in range (luminosite_fin_allumage):  # envoi le resulta en parametre 
                 p.ChangeDutyCycle(i)
                 time.sleep(tps)
-            for i in range(row[2]):
+            for i in range(luminosite_fin_allumage):
                 p.ChangeDutyCycle(100-i)
                 time.sleep(tps)
                 
