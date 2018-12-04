@@ -38,12 +38,12 @@ class LedType extends AbstractType
        ->add('heure', EntityType::class, array(
        'class'         => 'MenuBundle:Heures',
        'choice_label'  => 'heure',
-       'multiple'      => false,
+       'multiple'      => true,
 	   'expanded' => false))
        ->add('minute', EntityType::class, array(
        'class'         => 'MenuBundle:Minutes',
        'choice_label'  => 'minute',
-       'multiple'      => false,
+       'multiple'      => true,
 	   'expanded' => false))
 	   ->add('dureeProgressionAllumage',IntegerType::class)
        ->add('luminositeFinAllumage',IntegerType::class)
