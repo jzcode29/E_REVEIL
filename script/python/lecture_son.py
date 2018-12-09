@@ -28,14 +28,6 @@ pygame.init()
 pygame.mixer.music.load(son,)
 pygame.mixer.music.play()
 
-##GPIO.setmode(GPIO.BOARD)   # La numerotation choisie
-##GPIO.setup(36, GPIO.IN)  # Une entree : le poussoir
-GPIO.setmode(GPIO.BOARD)   # La numerotation choisie
-GPIO.setup(36, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Une entree : le poussoir
-
-
-
-channel = 36
 
 def my_callback(channel):
   if GPIO.input(channel):
@@ -50,12 +42,12 @@ def my_callback(channel):
     root.destroy()
     sys.exit()
     
+GPIO.setmode(GPIO.BOARD)   # La numerotation choisie
+GPIO.setup(36, GPIO.IN)  # Une entree : le poussoir
 
 
-
-
-  
-GPIO.add_event_detect(36, GPIO.BOTH, callback=my_callback)
+    
+GPIO.add_event_detect(36, GPIO.FALLING, callback=my_callback)
 GPIO.cleanup()
 def vol():
     root.after(1,vol)
@@ -66,8 +58,7 @@ def vol():
 
 def Arret():
     pygame.mixer.music.stop()
-    root.destroy()
-    sys.exit()
+    root.destroy()    
 
 root = Tk()
 root.title("Musique du reveil")

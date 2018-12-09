@@ -11,12 +11,12 @@
 import os
 import time
 from ConfigParser import SafeConfigParser
-from TM1637 import *
+from TM1637 import FourDigit
         
 
 # USER VARIABLES FROM .ini CONFIG FILE
 config = SafeConfigParser()
-config.read("/var/www/e_reveil/script/python/RaspiDigiHamClock/raspiclock.ini")
+config.read("/home/pi/RaspiDigiHamClock/raspiclock.ini")
 
 # Debug mode 0/1
 DEBUG = config.getint('CLOCK', 'debug')
@@ -98,6 +98,6 @@ while True:
         ct = time.localtime(cur)
         displayTM(disp[x],ct,mil[x],showColon)
 
-    time.sleep(10)
+    time.sleep(60)
     showColon = not showColon
 

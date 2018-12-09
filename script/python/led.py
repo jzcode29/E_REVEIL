@@ -8,7 +8,6 @@ import sys
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD) #parametre des pin de la carte (BOARD)
-#GPIO.setmode(GPIO.BOARD)
 GPIO.setup(12, GPIO.OUT) #parametre pin 12 led en output
 p = GPIO.PWM(12, 100)        #parametre du PWM sur pin 12 avec X%
 p.start(0.0) #start a 0.0 pour l'intensité
