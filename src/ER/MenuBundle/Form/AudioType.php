@@ -29,9 +29,7 @@ class AudioType extends AbstractType
 	
 
     $builder
-      ->add('volumeMax',IntegerType::class)
-	  ->add('fichierAudio', FichierAudioType::class, array('label'=>'Fichier audio'))
-      ->add('jours', EntityType::class, array(
+      ->add('Jours', EntityType::class, array(
         'class'         => 'MenuBundle:Jours',
 		'attr' => ['class' => 'bold'],
         'choice_label'  => 'jour',
@@ -47,7 +45,9 @@ class AudioType extends AbstractType
        'choice_label'  => 'minute',
        'multiple'      => true,
 	   'expanded' => false))
-	   ->add('Valider',SubmitType::class, array(
+      ->add('volumeMax',IntegerType::class)
+	  ->add('fichierAudio', FichierAudioType::class, array('label'=>'Fichier audio'))
+      ->add('Valider',SubmitType::class, array(
 	   'attr' => array('class' => 'button medium')))
     ;
 

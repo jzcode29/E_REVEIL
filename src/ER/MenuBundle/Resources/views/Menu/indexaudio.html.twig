@@ -24,7 +24,7 @@
 		    <hr>  
             {% if not audio.jours.empty %}
              <p>
-               Jours du réveil audio :
+               Jours :
               {% for jours in audio.jours %}
               <span class="bold">{{ jours.jour }} {% if not loop.last %}, {% endif %}</span>
               {% endfor %}
@@ -32,7 +32,7 @@
             {% endif %} 
             <hr>
            <p>
-            Heure du réveil audio : 
+            Heure : 
            <span class="bold">
            {% if not audio.heure.empty %}
            {% for heures in audio.heure %}
@@ -49,7 +49,7 @@
          </p> 
          <hr>  
          <p>
-         Volume sonore maximum : <span class="bold">{{ audio.volumeMax }} % </span>
+         Volume : <span class="bold">{{ audio.volumeMax }} % </span>
          </p>
         <hr>
         <p>  

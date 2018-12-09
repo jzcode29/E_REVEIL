@@ -7,10 +7,10 @@
   
   {% if listLeds %}
    {% for led in listLeds %}
-  <form  action="{{ path('menu_edit_led', {'id': led.id}) }}" method="post" >
+  <form  class="formledaudio" action="{{ path('menu_edit_led', {'id': led.id}) }}" method="post" >
     {% endfor %}
   {% else %}
-  <form  action="{{ path('menu_led_add') }}" method="post" >
+  <form  class="formledaudio" action="{{ path('menu_led_add') }}" method="post" >
   {% endif %}     
 
    
@@ -72,7 +72,7 @@
 	
     
     {# Génération du label. #}
-    {{ form_label(form.dureeProgressionAllumage,"Durée de progression de la LED (en minutes)") }}
+    {{ form_label(form.dureeProgressionAllumage,"Durée de la LED (en minutes)") }}
 
     {# Affichage des erreurs pour ce champ précis. #}
     <span class="error">{{ form_errors(form.dureeProgressionAllumage) }}</span>
@@ -85,7 +85,7 @@
             
             
     {# Génération du label. #}
-    {{ form_label(form.luminositeFinAllumage, "Luminosité en fin d'allumage (%)") }}
+    {{ form_label(form.luminositeFinAllumage, "Niveau de luminosité (%)") }}
 
     {# Affichage des erreurs pour ce champ précis. #}
     <span class="error">{{ form_errors(form.luminositeFinAllumage) }}</span>

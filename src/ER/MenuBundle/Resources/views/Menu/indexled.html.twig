@@ -27,7 +27,7 @@
 		   <hr>
              {% if not led.jours.empty %}
              <p>
-              Jours du réveil lumineux :
+              Jours :
               {% for jours in led.jours %}
               <span class="bold">{{ jours.jour }} {% if not loop.last %}, {% endif %}</span>
               {% endfor %}
@@ -35,7 +35,7 @@
              {% endif %} 
              <hr>
 		     <p>
-             Heure du réveil lumineux : 
+             Heure : 
              <span class="bold">
              {% if not led.heure.empty %}
                {% for heures in led.heure %}
@@ -52,11 +52,11 @@
             </p>
             <hr>  
             <p>
-            Durée de progression de la led : <span class="bold">{{ led.dureeProgressionAllumage }} minutes</span>
+            Durée de la LED : <span class="bold">{{ led.dureeProgressionAllumage }} minutes</span>
             </p>  
             <hr>  
             <p>
-            Luminosité en fin d'allumage : <span class="bold">{{ led.luminositeFinAllumage }} %</span>
+            Niveau de luminosité : <span class="bold">{{ led.luminositeFinAllumage }} %</span>
            </p>
            <hr>
            <br/>  

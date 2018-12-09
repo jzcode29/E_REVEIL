@@ -4,9 +4,27 @@ services:
          class: ER\MenuBundle\Launcher\LedFileLauncher
          
           
-  
+  menu.doctrine_listener.led_listener:
+    class: ER\MenuBundle\DoctrineListener\LedListener
+    arguments:
+      - "@menu.led_file_launcher"
+    tags:
+      - { name: doctrine.event_listener, event: postPersist }
+      - { name: doctrine.event_listener, event: postUpdate }
+      - { name: doctrine.event_listener, event: postRemove }
       
       
       
-  
+  menu.audio_file_launcher:
+         class: ER\MenuBundle\Launcher\AudioFileLauncher
+         
+          
+  menu.doctrine_listener.audio_listener:
+    class: ER\MenuBundle\DoctrineListener\AudioListener
+    arguments:
+      - "@menu.audio_file_launcher"
+    tags:
+      - { name: doctrine.event_listener, event: postPersist }
+      - { name: doctrine.event_listener, event: postUpdate }
+      - { name: doctrine.event_listener, event: postRemove } 
    

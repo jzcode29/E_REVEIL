@@ -5,15 +5,29 @@
       <div class="grid-x align-center">
 	    <div class="cell medium-8">
   
- {{ form_start(form) }}
+          <div class="formledaudio">
+			          
+			   {{ form_start(form) }}
 
   {# Les erreurs générales du formulaire. #}
   {{ form_errors(form) }}
 
-       
-			   
-			   
-	 {{ form_row(form.jours) }}	
+     <fieldset class="fieldset">
+		
+		
+		
+    <legend>{{ form_label(form.Jours,"Jours") }}</legend>
+    
+    
+   
+   
+    {% for field in form.Jours %}
+       <div class="scores">
+         {{ form_widget(field) }}
+         {{ form_label(field) }}
+       </div>
+    {% endfor %}
+    </fieldset>
 	 
 	  
         <div>
@@ -46,7 +60,7 @@
 	
 		<div>
     {# Génération du label. #}
-    {{ form_label(form.volumeMax, "Volume sonore maximum du réveil (%)") }}
+    {{ form_label(form.volumeMax, "Volume (%)") }}
 
     {# Affichage des erreurs pour ce champ précis. #}
     <span class="error">{{ form_errors(form.volumeMax) }}</span>
@@ -87,6 +101,6 @@
 
 	   </div>
 	  </div>
-	
+	</div>
 
 	

@@ -77,12 +77,9 @@ class MenuController extends Controller
 	  
 	  
 	  
-      $request->getSession()->getFlashBag()->add('notice', 'Votre réveil lumineux est configuré et activé !');
+      $request->getSession()->getFlashBag()->add('notice', 'Réveil lumineux configuré et activé !');
 
       return $this->redirectToRoute('menu_verif_led');
-      
-     
-      
     }
 
     return $this->render('MenuBundle:Menu:addled.html.twig', array(
@@ -139,7 +136,7 @@ class MenuController extends Controller
       // Inutile de persister ici, Doctrine connait déjà notre paramétrage
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Les paramètres ont bien été modifiés !');
+      $request->getSession()->getFlashBag()->add('notice', 'Paramètres modifiés !');
 
       return $this->redirectToRoute('menu_verif_led');
     }
@@ -175,7 +172,7 @@ class MenuController extends Controller
     $em->flush();
 
   
-   $request->getSession()->getFlashBag()->add('info', "Les paramètres ont bien été supprimés et le réveil lumineux est à présent Désactivé" ); 
+   $request->getSession()->getFlashBag()->add('info', 'Paramètres supprimés et réveil lumineux désactivé !' ); 
 	
     return $this->redirectToRoute('menu_verif_led');
 	
@@ -237,7 +234,7 @@ class MenuController extends Controller
       $em->persist($audio);
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Votre réveil audio est configuré et activé !');
+      $request->getSession()->getFlashBag()->add('notice', 'Réveil audio configuré et activé !');
 
       return $this->redirectToRoute('menu_verif_audio');
     }
@@ -298,7 +295,7 @@ class MenuController extends Controller
       // Inutile de persister ici, Doctrine connait déjà notre paramétrage
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Les paramètres ont bien été modifiés !');
+      $request->getSession()->getFlashBag()->add('notice', 'Paramètres modifiés !');
 
       return $this->redirectToRoute('menu_verif_audio');
     }
@@ -334,7 +331,7 @@ class MenuController extends Controller
     $em->flush();
 
   
-   $request->getSession()->getFlashBag()->add('info', "Les paramètres ont bien été supprimés et le réveil audio est à présent Désactivé" ); 
+   $request->getSession()->getFlashBag()->add('info', 'Paramètres supprimés et réveil audio désactivé !' ); 
 	
     return $this->redirectToRoute('menu_verif_audio');
 	

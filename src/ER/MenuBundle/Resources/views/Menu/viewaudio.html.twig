@@ -23,7 +23,7 @@
   
     {% if not audio.jours.empty %}
     <p>
-      Jours de déclenchement du réveil audio :
+      Jours :
       {% for jours in audio.jours %}
         <span class="bold">{{ jours.jour }} {% if not loop.last %}, {% endif %}</span>
       {% endfor %}
@@ -34,7 +34,7 @@
   
   
       <p>
-   Heure de déclenchement du réveil audio : 
+   Heure : 
    
    
    <span class="bold">
@@ -60,7 +60,7 @@
   <hr>
   
    <p>
-   Volume sonore maximum : <span class="bold">{{ audio.volumeMax }} % </span>
+   Volume : <span class="bold">{{ audio.volumeMax }} % </span>
    </p>
    
   
@@ -68,18 +68,18 @@
    
    
    <hr>
-   <div>
+   
 
     {# On vérifie qu'un fichier mp3 soit bien associé au paramétrage de l'audio #}
     {% if audio.fichierAudio is not null %}
-      <div>
+      <p>
   
       Musique : <span class="bold">{{ audio.fichierAudio.alt }}</span>
 	  
-      </div>
+      </p>
     {% endif %}
 	
-  </div>
+ 
    
    
    
