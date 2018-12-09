@@ -5,10 +5,10 @@
     <title>Une erreur s'est produite</title>
 	{% block stylesheets %}
       
-      <link href="{{ asset('foundation_e_reveil/css/app.css') }}" rel="stylesheet" />
+      <link href="{{ asset('er_symfony/Css/app.css') }}" rel="stylesheet" />
 	{% endblock %}
-	<script src="{{ asset('foundation_e_reveil/js/vendor/jquery.js') }}"></script>
-	<script src="{{ asset('foundation_e_reveil/js/vendor/foundation.js') }}"></script>
+	<script src="{{ asset('er_symfony/node_modules/jquery/dist/jquery.js') }}"></script>
+	<script src="{{ asset('er_symfony/node_modules/foundation-sites/dist/js/foundation.js') }}"></script>
   </head>
   <body>
   <div id="content" class="grid-container">
@@ -23,8 +23,8 @@
 </div>
 {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-     <script src="{{ asset('foundation_e_reveil/js/vendor/what-input.js') }}"></script>
-    <script src="{{ asset('foundation_e_reveil/js/app.js')}}"></script>   
+     <script src="{{ asset('er_symfony/node_modules/what-input/dist/what-input.js') }}"></script>
+    <script src="{{ asset('er_symfony/js/app.js')}}"></script>  
   {% endblock %}
   </body>
 </html>
